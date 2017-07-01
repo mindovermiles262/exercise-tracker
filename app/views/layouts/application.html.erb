@@ -9,7 +9,18 @@
   </head>
 
   <body>
+    <%# Render Header %>
     <%= render 'layouts/nav' %>
+
+     <%# Render Flash Messages %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+      <% end %>
+    </div>
+
+    <%# Render Body %>
     <%= yield %>
+
   </body>
 </html>

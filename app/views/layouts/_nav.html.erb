@@ -6,9 +6,13 @@
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-      <!-- Navbar if logged in: -->
+      
+      <!-- Navbar if logged in:
+      <ul class="nav navbar-nav navbar-left">
         <li><%= link_to "Find Friends", users_path, id: "link" %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a id="link">Messages</a></li>
         <li><a id="link">Leaderboard</a></li>
         <li><a class="emphasize" id="link">Enter Activity</a></li>
         <li class="dropdown">
@@ -21,11 +25,14 @@
             <li><a href="#">Suggestions</a></li>
           </ul>
         </li>
+      </ul>  -->
         
       <!-- Navbar as guest -->
-        <!-- <li><a id="link">Sign Up</a></li> -->
-
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", root_path, id: "link" %></li>
+        <li><%= link_to "Sign Up", signup_path, id: "link" %></li>
       </ul>
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
