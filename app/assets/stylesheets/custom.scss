@@ -88,8 +88,17 @@ p {
 }
 
 .emphasize {
+  font-size: 1.2em;
   font-weight: bold;
-  text-decoration: underline;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin-top: 5px;
+
+
+  &:hover {
+    background-color: #f0ad4e !important;
+    color: #fff;
+  }
 }
 
 .icon {

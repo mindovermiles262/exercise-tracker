@@ -1,30 +1,71 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
+  before_action :logged_in_user,  only: [:index, :edit, :update, :destroy, :show]
+  before_action :correct_user,    only: [:edit, :update]
+  before_action :admin_user,      only: [:destroy]
 
   def index
     @users = User.all
   end
 
+  def new
+    @user = User.new
+  end
+
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in @user
       flash[:info] = "Welcome, #{@user.name}!"
       redirect_to root_url
     else
-      # Error rendered by '_users_form'
+      # Errors rendered by '_users_form'
       render 'new'
     end
-
-  # TODO: Edit Users
-  # TODO: Destroy Users
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
+
+  def edit
+    @user = User.find_by(params[:id])
+  end
+
+  def update
+    @user = User.find_by(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "User Profile Successfully Updated"
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  # TODO: Destroy Users
 
 private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      # store_location
+      flash[:danger] = "Please Log In"
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
+
+  def 
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
 end
