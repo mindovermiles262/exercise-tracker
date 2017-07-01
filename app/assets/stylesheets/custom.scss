@@ -78,9 +78,14 @@ p {
 #link {
   font-size: 1.2em;
   color: white;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  margin-top: 5px;
+
+
   &:hover {
     color: #337ab7;
-    border-radius: 15px;
+    border-radius: 4px;
   }
   &:hover > i {
     color: #337ab7;
@@ -88,16 +93,17 @@ p {
 }
 
 .emphasize {
+  border: 0px;
   font-size: 1.2em;
   font-weight: bold;
   padding-top: 10px !important;
   padding-bottom: 10px !important;
   margin-top: 5px;
 
-
   &:hover {
-    background-color: #f0ad4e !important;
-    color: #fff;
+    background-color: #fff !important;
+    border-radius: 4px;
+    color: #337ab7;
   }
 }
 
@@ -106,15 +112,12 @@ p {
   color: white;
 }
 
-// Cog Icon Coloring
-li.open a { border-radius: 15px; }
+// Cog Icon Coloring after .open
+li.open a { border-radius: 4px; }
 .nav > li > a:focus { background-color: transparent; }
 li.open a:hover > i, li.open a:active > i, li.open a:focus > i { 
   color: #337ab7; 
 }
-// .nav>li:not(.open)>a:focus {
-//     background-color:#337ab7
-// }
 
 
 
