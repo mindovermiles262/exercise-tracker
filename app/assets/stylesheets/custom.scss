@@ -1,9 +1,9 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
+// --- Navbar --- //
 #brand {
   float: left;
   margin-right: 10px;
@@ -21,10 +21,12 @@
 #link {
   font-size: 1.2em;
   color: white;
-
   &:hover {
     color: #337ab7;
     border-radius: 15px;
+  }
+  &:hover > i {
+    color: #337ab7;
   }
 }
 
@@ -35,4 +37,12 @@
 
 .icon {
   font-size: 1.3em;
+  color: white;
+}
+
+// Cog Icon Coloring
+li.open a { border-radius: 15px; }
+.nav > li > a:focus { background-color: transparent; }
+li.open a:hover > i, li.open a:active > i, li.open a:focus > i { 
+  color: #337ab7; 
 }
