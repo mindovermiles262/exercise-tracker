@@ -2,17 +2,29 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <a class="navbar-brand" id="logo">Exercise Tracker</a>
+      <a class="navbar-brand" id="brand">Exercise Tracker</a>
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       <!-- If Logged In: -->
-        <li><a id="link">Profile</a></li>
+        <li><%= link_to "Find Friends", users_path, id: "link" %></li>
         <li><a id="link">Leaderboard</a></li>
         <li><a class="emphasize" id="link">Enter Activity</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle bg-primary" id="link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog icon" aria-hidden="true"></i></a>
+          <ul class="dropdown-menu">
+            <li><a>USERNAME, EMAIL</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Calendar</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Suggestions</a></li>
+          </ul>
+        </li>
+        
       <!-- As Guest -->
         <!-- <li><a id="link">Sign Up</a></li> -->
+
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
