@@ -1,0 +1,30 @@
+@import "bootstrap";
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+#link {
+  font-size: 1.2em;
+  color: white;
+
+  &:hover {
+    color: #337ab7;
+    border-radius: 15px;
+  }
+}
+
+.emphasize {
+  font-weight: bold;
+  text-decoration: underline;
+}
