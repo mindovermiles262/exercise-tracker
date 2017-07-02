@@ -1,9 +1,11 @@
 <% provide(:title, "All Users") %>
 <h1>All Users</h1>
 
-<% @users.each do |user| %>
-  <ul class="users">
-    <h3><%= user.name %></h3>
-  </ul>
-<% end %>
+<section class="user_info">
+  <% @users.each do |user| %>
+    <ul class="users">
+      <h3><%= gravitar_for(user, size: 35) %> <%= link_to user.name, user_path(user) %></h3>
+    </ul>
+  <% end %>
+</section>
 

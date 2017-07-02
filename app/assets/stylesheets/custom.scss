@@ -75,10 +75,16 @@ p {
   }
 }
 
+.border-white-1 {
+  border-radius: 4px;
+  border: 1px solid white;
+}
+
 #link {
   font-size: 1.2em;
   color: white;
   padding-top: 10px !important;
+  margin-right: 10px;
   padding-bottom: 10px !important;
   margin-top: 5px;
 
@@ -86,6 +92,7 @@ p {
   &:hover {
     color: #337ab7;
     border-radius: 4px;
+    border: 1px solid white;
   }
   &:hover > i {
     color: #337ab7;
@@ -97,6 +104,7 @@ p {
   font-size: 1.2em;
   font-weight: bold;
   padding-top: 10px !important;
+  margin-right: 10px;
   padding-bottom: 10px !important;
   margin-top: 5px;
 
@@ -161,6 +169,9 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+.top-padding-60 {
+  padding-top: 60px;
 }
 
 

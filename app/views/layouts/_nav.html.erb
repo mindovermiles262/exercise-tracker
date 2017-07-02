@@ -9,9 +9,8 @@
       <% if logged_in? %>
       <!-- Navbar if logged in:  -->
         <ul class="nav navbar-nav navbar-center">
-          <li><%= link_to "Find Friends", users_path, id: "link" %></li>
           <li><a id="link">Messages</a></li>
-          <li><a id="link">Leaderboard</a></li>        
+          <li><%= link_to "Leaderboard", users_path, id: "link" %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a class="emphasize btn btn-success" id="">Enter Activity</a></li>
@@ -31,6 +30,7 @@
       <% else %>  
       <!-- Navbar as guest -->
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Sign Up Now", signup_path, id: "link", class: 'border-white-1' %></li>
           <li><%= link_to "Log In", login_path, id: "link" %></li>
         </ul>
       <% end %>
