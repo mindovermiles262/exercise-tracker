@@ -6,16 +6,20 @@
   </aside>
   <aside class="col-md-4">
     <section class="user_info">
-        <h1><%= @user.name %></h1>
+      <h1><%= @user.name %></h1>
+      <% if current_user == @user %>
         <h2><%= @user.email %></h2>
+      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
-    <% if @user.posts.any? %>
-      <h3>Your Posts (<%= @user.posts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @posts %>
-      </ol>
+    <% if current_user == @user %>
+      <% if @user.posts.any? %>
+        <h3>Your Posts (<%= @user.posts.count %>)</h3>
+        <ol class="microposts">
+          <%= render @posts %>
+        </ol>
+      <% end %>
     <% end %>
   </div>
 </div>
