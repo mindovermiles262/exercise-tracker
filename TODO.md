@@ -1,4 +1,4 @@
-* Add exercise model/controller
+* ~~Add exercise model/controller~~
 * Sort leaderboard by exercise count
   * Currently -> Shows number of posts
 * Add calendar

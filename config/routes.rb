@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  post 'exercises/new'
+
   resources :users
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
