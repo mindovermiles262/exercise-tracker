@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   get '/messages', to: 'posts#index'
 
+  get '/leaderboard', to: 'users#leaderboard'
+
 end

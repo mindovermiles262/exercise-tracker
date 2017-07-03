@@ -8,10 +8,9 @@
         <%= gravitar_for(user, size: 35) %>
         <%= link_to user.name, user_path(user) %>
         <% if current_user.admin? %>
-          <%= link_to "Delete", user, method: :delete, data: { confirm: "Are you sure you want to delete this user?" } %>
+          <%= link_to "  ||  Delete User", user, method: :delete, data: { confirm: "Are you sure you want to delete this user?" } %>
         <% end %>
       </h3>
     </ul>
   <% end %>
 </section>
-

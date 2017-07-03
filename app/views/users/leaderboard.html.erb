@@ -1,0 +1,18 @@
+<% provide(:title, "Leaderboard") %>
+<h1>Leaderboard</h1>
+
+<section class="user_info">
+
+<!-- TODO: Sort by counts -->
+
+  <% @users.each do |user| %>
+    <ul class="users">
+    <% if user.posts.count > 0 %>
+      <h3>
+        (<%= user.posts.count %>)
+        <%= link_to user.name, user_path(user) %>
+      </h3>
+    </ul>
+    <% end %>
+  <% end %>
+</section>
