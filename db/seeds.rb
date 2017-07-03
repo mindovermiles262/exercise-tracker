@@ -11,9 +11,20 @@ User.create!( name: 'Administrator',
               password_confirmation: 'foobar',
               admin: true)
 
+User.create!( name: 'Example User',
+              email: 'user@example.com',
+              password: 'foobar',
+              password_confirmation: 'foobar')
+
 5.times do |i|
   name = Faker::HarryPotter.character
   email = "user-#{i}@example.com"
   password = 'foobar'
   User.create!(name: name, email: email, password: password, password_confirmation: password)
+end
+
+users = User.order(:created_at).take(6)
+10.times do
+  body = Faker::HarryPotter.quote
+  users.each { |user| user.posts.create!(body: body) }
 end

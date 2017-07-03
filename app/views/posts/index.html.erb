@@ -1,0 +1,12 @@
+<% provide(:title, "Message Board") %>
+<h1>Message Board</h1>
+
+<!-- TODO: Paginate rather than limit -->
+
+  <div class="col-md-8">
+    <% @post.each do |p| %>
+      <ol class="microposts">
+        <%= render p %>
+      </ol>
+    <% end %>
+  </div>
