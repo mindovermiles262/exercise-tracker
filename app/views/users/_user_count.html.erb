@@ -1,0 +1,10 @@
+<section class="user_info">
+  <ul class="users">
+  <% if user.exercise_count > 0 %>
+    <h3>
+      (<%= user.exercise_count %>)
+      <%= link_to user.name, user_path(user) %>
+    </h3>
+  <% end %>
+  </ul>
+</section>

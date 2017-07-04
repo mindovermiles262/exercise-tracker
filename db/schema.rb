@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703233554) do
+ActiveRecord::Schema.define(version: 20170704035641) do
 
   create_table "exercises", force: :cascade do |t|
     t.integer "user_id"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170703233554) do
     t.datetime "updated_at", null: false
     t.string "remember_digest"
     t.integer "exercise_count", default: 0
+    t.integer "posts_count", default: 0
   end
 
 end

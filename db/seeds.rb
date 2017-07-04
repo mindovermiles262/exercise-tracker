@@ -18,11 +18,20 @@ User.create!( name: 'Example User',
 end
 
 users = User.order(:created_at)
-10.times do
-  body = Faker::HarryPotter.quote.next
-  users.each { |user| user.posts.create!(body: body) }
+users.each do |u|
+  # Seed Quotes for each user
+  rand(1..10).times do
+    body = Faker::HarryPotter.quote
+    u.posts.create(body: body)
+  end
+
+  # Seed exercise_count for each user
+  rand(1..10).times do
+    u.exercises.create
+  end
 end
 
+# Seed Administrator Role
 User.create!( name: 'Administrator',
               email: 'admin@example.com',
               password: 'foobar',

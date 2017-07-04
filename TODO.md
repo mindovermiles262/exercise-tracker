@@ -1,6 +1,6 @@
 * ~~Add exercise model/controller~~
-* Sort leaderboard by exercise count
-  * Currently -> Shows number of posts
+* ~~Sort leaderboard by exercise count~~
+  * ~~Currently -> Shows number of posts~~
 * Add calendar
   * Two stars/day for Monday - Friday
   * One star/day weekends

@@ -7,7 +7,20 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @leaders = User.order(exercise_count: :desc)
+    # @leaders = User.order(exercise_count: :desc).limit(3)
+    @leaders = Array.new
+    User.where("exercise_count > 0").order(exercise_count: :desc).group_by{ |c| c.exercise_count }.take(2).each do |k,v|
+      v.each do |u|
+        @leaders.append(u)
+      end
+    end
+    
+    @losers = Array.new
+    User.where("exercise_count > 0").order(exercise_count: :asc).group_by{ |c| c.exercise_count }.take(2).each do |k,v|
+      v.each do |u|
+        @losers.append(u)
+      end
+    end
   end
 
   def new

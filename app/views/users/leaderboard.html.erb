@@ -1,15 +1,12 @@
 <% provide(:title, "Leaderboard") %>
 <h1>Leaderboard</h1>
 
-<section class="user_info">
-  <% @leaders.each do |user| %>
-    <ul class="users">
-    <% if user.exercise_count > 0 %>
-      <h3>
-        (<%= user.exercise_count %>)
-        <%= link_to user.name, user_path(user) %>
-      </h3>
-    </ul>
-    <% end %>
-  <% end %>
-</section>
+<% @leaders.each do |user| %>
+  <%= render partial: 'user_count', :locals => { user: user } %>
+<% end %>
+
+<h1>Loserboard</h1>
+
+<% @losers.each do |user| %>
+  <%= render partial: 'user_count', :locals => { user: user } %>
+<% end %>

@@ -14,8 +14,8 @@
   </aside>
   <div class="col-md-8">
     <% if current_user == @user %>
-      <% if @user.posts.any? %>
-        <h3>Your Posts (<%= @user.posts.count %>)</h3>
+      <% if @user.posts_count > 0 %>
+        <h3>Your Posts (<%= @user.posts_count %>)</h3>
         <ol class="microposts">
           <%= render @posts %>
         </ol>

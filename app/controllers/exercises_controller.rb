@@ -6,10 +6,10 @@ class ExercisesController < ApplicationController
     if (Time.current - last_exercise >= 3600)
       current_user.exercises.create
       flash[:success] = "Exercise Logged"
-      redirect_to current_user
+      redirect_to leaderboard_url
     else
       flash[:danger] = "You may only log one exercise per hour"
-      redirect_to current_user
+      redirect_to leaderboard_url
     end
   end
 
