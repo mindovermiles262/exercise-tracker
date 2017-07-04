@@ -2,9 +2,9 @@ class User < ApplicationRecord
   attr_accessor :remember_token
   has_many :posts,      dependent: :destroy
   has_many :exercises,  dependent: :destroy
+
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
-
   validates :name, presence: true, length: { maximum: 50 }
 
   before_save :downcase_email

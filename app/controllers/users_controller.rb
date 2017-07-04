@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
-    @users = User.all
+    @leaders = User.order(exercise_count: :desc)
   end
 
   def new
