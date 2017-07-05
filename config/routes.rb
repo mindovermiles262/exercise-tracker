@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :users
   get '/signup', to: 'users#new'
+
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
@@ -11,6 +12,7 @@ Rails.application.routes.draw do
   root 'static_pages#index'
   get 'static_pages/index'
 
+  resources :posts, :only => [:new, :create, :index]
   get '/messages', to: 'posts#index'
 
   get '/leaderboard', to: 'users#leaderboard'

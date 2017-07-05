@@ -1,12 +1,12 @@
 <% provide(:title, "Message Board") %>
 <h1>Message Board</h1>
+<h2><%= link_to "New Message", new_post_path, class: 'right' %></h2>
 
 <div class="col-md-8">
-  <%= will_paginate @post %>
   <% @post.each do |p| %>
     <ol class="microposts">
       <%= render p %>
     </ol>
   <% end %>
   <%= will_paginate @post %>
-  </div>
+</div>
