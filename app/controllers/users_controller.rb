@@ -15,12 +15,13 @@ class UsersController < ApplicationController
       end
     end
     
-    @losers = Array.new
+    losers = Array.new
     User.where("exercise_count > 0").order(exercise_count: :asc).group_by{ |c| c.exercise_count }.take(2).each do |k,v|
       v.each do |u|
-        @losers.append(u)
+        losers.append(u)
       end
     end
+    @losers = losers.reverse
   end
 
   def new
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts.paginate(page: params[:page], per_page: 5).order('created_at desc')
+    @exercises = @user.exercises
   end
 
   def edit

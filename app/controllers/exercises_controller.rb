@@ -4,7 +4,7 @@ class ExercisesController < ApplicationController
     last_exercise = current_user.exercises.exists?  ? current_user.exercises.first.created_at
                                                     : (Time.current - 3600)
     if (Time.current - last_exercise >= 3600)
-      current_user.exercises.create
+      current_user.exercises.create(exercise_time: Time.zone.now)
       flash[:success] = "Exercise Logged"
       redirect_to leaderboard_url
     else

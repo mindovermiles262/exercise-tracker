@@ -1,7 +1,8 @@
 <% provide(:title, @user.name) %>
 
 <div class="row">
-  <aside class="col-md-2">
+  <aside class="col-md-3"></aside>
+  <aside class="col-md-1">
     <%= gravitar_for(@user, size: 100) %>
   </aside>
   <aside class="col-md-4">
@@ -12,7 +13,10 @@
       <% end %>
     </section>
   </aside>
-  <div class="col-md-8">
+  <!-- <aside class="col-md-2"></aside> -->
+
+  <!-- Display User Posts -->
+  <div class="col-md-6">
     <% if current_user == @user %>
       <% if @user.posts_count > 0 %>
         <h3>Your Posts (<%= @user.posts_count %>)</h3>
@@ -22,5 +26,17 @@
         <%= will_paginate @posts %>
       <% end %>
     <% end %>
+  </div>
+
+  <!-- Display User Exercises -->
+  <div class="col-md-6">
+  <% if current_user == @user %>
+    <% if @user.exercise_count > 0 %>
+      <h3>Your Exercise History (<%= @user.exercise_count %>)</h3>
+      <ol class="microposts">
+        <%= render @exercises %>
+      </ol>
+    <% end %>
+  <% end %>
   </div>
 </div>

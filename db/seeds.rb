@@ -27,7 +27,7 @@ users.each do |u|
 
   # Seed exercise_count for each user
   rand(1..10).times do
-    u.exercises.create
+    u.exercises.create(exercise_time: Time.zone.now)
   end
 end
 
