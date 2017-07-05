@@ -12,3 +12,4 @@
     * Form submission
 * Email verification
 * Test suite
+* ~~Mobile Navbar~~

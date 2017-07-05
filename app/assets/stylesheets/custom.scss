@@ -64,7 +64,7 @@ p {
 #brand {
   float: left;
   margin-right: 10px;
-  font-size: 1.7em;
+  font-size: 1.54em; // Max iPhone4 size
   color: white;
   text-transform: uppercase;
   font-weight: bold;
@@ -87,6 +87,7 @@ p {
   margin-right: 10px;
   padding-bottom: 10px !important;
   margin-top: 5px;
+  text-align: center;
 
 
   &:hover {
@@ -115,7 +116,7 @@ p {
   }
 }
 
-.icon {
+.icon, .glyphicon {
   font-size: 1.3em;
   color: white;
 }
@@ -126,8 +127,6 @@ li.open a { border-radius: 4px; }
 li.open a:hover > i, li.open a:active > i, li.open a:focus > i { 
   color: #337ab7; 
 }
-
-
 
 /* Forms */
 
