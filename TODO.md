@@ -13,3 +13,4 @@
 * Email verification
 * Test suite
 * ~~Mobile Navbar~~
+* Posts error messages on bad create

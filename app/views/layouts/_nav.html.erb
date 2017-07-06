@@ -28,7 +28,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle bg-primary" id="link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-cog icon" aria-hidden="true"></i></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Your Calendar</a></li>
+              <li><%= link_to "Calendar", calendar_path %></li>
               <li><%= link_to "All Users", users_path %></li>
               <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
               <li role="separator" class="divider"></li>

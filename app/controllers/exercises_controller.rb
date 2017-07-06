@@ -13,4 +13,10 @@ class ExercisesController < ApplicationController
     end
   end
 
+  def calendar
+    # @events = Exercise.all
+    @events = Exercise.select(:exercise_time, :user_id)
+    @users = User.distinct.pluck(:name, :user_id)
+  end
+
 end
