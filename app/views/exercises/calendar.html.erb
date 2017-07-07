@@ -1,9 +1,8 @@
 <h1>Calendar</h1>
 
-<%= week_calendar(attribute: :exercise_time, events: @events) do |date, events| %>
-  <%= date %>
-
-  <% events.each do |event| %>
+<%= week_calendar(attribute: :exercise_time, events: @exercises) do |date, exercises| %>
+  <%= date.day %>
+  <% exercises.each do |event| %>
     <div>
       <%= event.user.name %>
     </div>

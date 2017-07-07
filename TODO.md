@@ -13,4 +13,5 @@
 * Email verification
 * Test suite
 * ~~Mobile Navbar~~
-* Posts error messages on bad create
+* Posts: error messages on bad create, strong params
+* Reset leaderboard monthly

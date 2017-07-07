@@ -14,9 +14,7 @@ class ExercisesController < ApplicationController
   end
 
   def calendar
-    # @events = Exercise.all
-    @events = Exercise.select(:exercise_time, :user_id)
-    @users = User.distinct.pluck(:name, :user_id)
+    @exercises = Exercise.select(:exercise_time, :user_id).group("Date(exercise_time)").group(:exercise_time, :user_id, :created_at)    
   end
 
 end
