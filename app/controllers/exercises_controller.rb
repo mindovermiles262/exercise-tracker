@@ -1,4 +1,5 @@
 class ExercisesController < ApplicationController
+  before_action :logged_in_user,  only: [:new, :calendar]
 
   def new
     last_exercise = current_user.exercises.exists? ?
