@@ -11,8 +11,13 @@ class PostsController < ApplicationController
   
   def create
     @post = current_user.posts.build(post_params)
-    @post.save
-    redirect_to(messages_path)
+    if @post.save
+      flash[:success] = "Message Created"
+      redirect_to(messages_path)
+    else
+      flash[:danger] = "Could not Create Message"
+      redirect_to new_post_path
+    end
   end
   
 private
