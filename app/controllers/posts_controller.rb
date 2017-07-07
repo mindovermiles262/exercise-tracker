@@ -10,13 +10,15 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = current_user.posts.build(body: params[:post][:body], user_id: params[:post][:user])
+    @post = current_user.posts.build(post_params)
     @post.save
     redirect_to(messages_path)
   end
   
 private
 
-
+  def post_params
+    params.require(:post).permit(:body, :user_id)
+  end
 
 end
