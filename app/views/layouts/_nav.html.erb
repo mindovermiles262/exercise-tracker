@@ -21,7 +21,7 @@
           <li><%= link_to "Leaderboard", leaderboard_path, id: "link" %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Exercise", exercises_new_path(user_id: current_user.id), :method=> :post, class: "emphasize btn btn-success" %></a></li>
+          <li><%= link_to "Exercise", exercises_new_path(user_id: current_user.id, exercise_time: Time.zone.now, test: 'foobar'), :method=> :post, class: "emphasize btn btn-success" %></a></li>
           <% if current_user %>
             <li><%= link_to current_user.name, current_user, id: "link" %></li>
           <% end %>
