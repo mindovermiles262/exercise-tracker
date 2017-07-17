@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   # Static Pages
   get 'static_pages/index'
+  get '/about',   to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
 
   # Posts
   resources :posts, :only => [:new, :create, :index]
