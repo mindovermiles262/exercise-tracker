@@ -8,18 +8,26 @@ class UsersController < ApplicationController
 
   def leaderboard
     @leaders = Array.new
-    User.where("exercise_count > 0").order(exercise_count: :desc).group_by{ |c| c.exercise_count }.take(2).each do |k,v|
-      v.each do |u|
-        @leaders.append(u)
+    User.includes(:exercises).references(:exercises)
+      .order(exercise_count: :desc)
+      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
+      .group_by{ |c| c.exercise_count }
+      .take(2).each do |reps, user|
+        user.each do |params|
+          @leaders << [params.name, params.exercise_count, params.id]
+        end
       end
-    end
-    
+   
     losers = Array.new
-    User.where("exercise_count > 0").order(exercise_count: :asc).group_by{ |c| c.exercise_count }.take(2).each do |k,v|
-      v.each do |u|
-        losers.append(u)
+    User.includes(:exercises).references(:exercises)
+      .order(exercise_count: :asc)
+      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
+      .group_by{ |c| c.exercise_count }
+      .take(2).each do |reps, user|
+        user.each do |params|
+          losers << [params.name, params.exercise_count, params.id]
+        end
       end
-    end
     @losers = losers.reverse
   end
 
