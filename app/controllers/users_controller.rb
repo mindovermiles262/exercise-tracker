@@ -8,27 +8,19 @@ class UsersController < ApplicationController
 
   def leaderboard
     @leaders = Array.new
-    User.includes(:exercises).references(:exercises)
-      .order(exercise_count: :desc)
-      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
-      .group_by{ |c| c.exercise_count }
-      .take(2).each do |reps, user|
+    User.top_2.each do |reps, user|
         user.each do |params|
           @leaders << [params.name, params.exercise_count, params.id]
         end
       end
    
-    losers = Array.new
-    User.includes(:exercises).references(:exercises)
-      .order(exercise_count: :asc)
-      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
-      .group_by{ |c| c.exercise_count }
-      .take(2).each do |reps, user|
+    @losers = Array.new
+    User.bottom_2.each do |reps, user|
         user.each do |params|
-          losers << [params.name, params.exercise_count, params.id]
+          @losers << [params.name, params.exercise_count, params.id]
         end
       end
-    @losers = losers.reverse
+    @losers.reverse!
   end
 
   def new
