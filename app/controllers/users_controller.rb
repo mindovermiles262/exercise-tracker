@@ -10,14 +10,14 @@ class UsersController < ApplicationController
     @leaders = Array.new
     User.top_2.each do |reps, user|
         user.each do |params|
-          @leaders << [params.name, params.exercise_count, params.id]
+          @leaders << [params.name, params.exercises.this_month.count, params.id]
         end
       end
    
     @losers = Array.new
     User.bottom_2.each do |reps, user|
         user.each do |params|
-          @losers << [params.name, params.exercise_count, params.id]
+          @losers << [params.name, params.exercises.this_month.count, params.id]
         end
       end
     @losers.reverse!
