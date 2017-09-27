@@ -13,17 +13,9 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX },
             uniqueness: { case_sensitive: false }
 
-  scope :top_2, -> {  includes(:exercises).references(:exercises)
-                                      .order(exercise_count: :desc)
-                                      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
-                                      .group_by{ |c| c.exercise_count }
-                                      .take(2) }
 
-  scope :bottom_2, -> {  includes(:exercises).references(:exercises)
-                                      .order(exercise_count: :asc)
-                                      .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 0 , Time.now.beginning_of_month, Time.now.end_of_month)
-                                      .group_by{ |c| c.exercise_count }
-                                      .take(2) }
+
+  
   # Returns hash digest of given string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -46,6 +38,21 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  scope :exercises_this_month, -> {  includes(:exercises).references(:exercises)
+    .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 
+    0 , Time.now.beginning_of_month, Time.now.end_of_month) 
+  }
+
+  def User.losers
+    limit = User.exercises_this_month.where("exercise_count > ?", 0).order(exercise_count: :asc).second.exercise_count
+    User.exercises_this_month.where("exercise_count > ? AND exercise_count <= ?", 0, limit)
+  end
+
+  def User.leaders
+    limit = User.exercises_this_month.where("exercise_count > ?", 0).order(exercise_count: :desc).second.exercise_count
+    User.exercises_this_month.where("exercise_count > ? AND exercise_count >= ?", 0, limit)
   end
 
 private

@@ -1,8 +1,8 @@
 <section class="user_info">
   <ul class="users">
     <h3>
-      (<%= user[1] %>)
-      <%= link_to user[0], user_path(user[2]) %>
+      (<%= user.exercise_count %>)
+      <%= link_to user.name, user_path(user) %>
     </h3>
   </ul>
 </section>
