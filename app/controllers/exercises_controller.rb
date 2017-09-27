@@ -2,9 +2,7 @@ class ExercisesController < ApplicationController
   before_action :logged_in_user,  only: [:new, :calendar]
 
   def new
-    last_exercise = current_user.exercises.exists? ?
-                      current_user.exercises.first.created_at :
-                      (Time.current - 3600)
+    last_exercise = Exercise.last_exercise(current_user)
 
     if (Time.current - last_exercise >= 3600)
       current_user.exercises.create(exercise_params)
