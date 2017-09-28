@@ -40,25 +40,42 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  scope :exercises_this_month, -> {  includes(:exercises).references(:exercises)
-    .where("exercise_count > ? AND exercises.exercise_time > ? AND exercises.exercise_time < ?", 
-    0 , Time.now.beginning_of_month, Time.now.end_of_month) 
-  }
-
   def User.losers
-    limit = User.exercises_this_month.where("exercise_count > ?", 0).order(exercise_count: :asc).second.exercise_count
-    User.exercises_this_month.where("exercise_count > ? AND exercise_count <= ?", 0, limit)
+    # set 'limit' to monthly exercise count of 2nd from last user
+    limit = User.monthly_count[-2][0] 
+    losers = Array.new
+    User.monthly_count.each do |arr|
+      losers << arr if arr[0] <= limit
+    end
+    losers
   end
 
   def User.leaders
-    limit = User.exercises_this_month.where("exercise_count > ?", 0).order(exercise_count: :desc).second.exercise_count
-    User.exercises_this_month.where("exercise_count > ? AND exercise_count >= ?", 0, limit)
+    # set 'limit' to monthly exercise count of 2nd place user
+    limit = User.monthly_count[1][0]
+    leaders = Array.new
+    User.monthly_count.each do |arr|
+      leaders << arr if arr[0] >= limit
+      puts "#{arr[0]} limit: #{limit}"
+    end
+    leaders
   end
 
-private
-
+  private
+  
   def downcase_email
     self.email = email.downcase
   end
-
-end
+  
+  def User.monthly_count
+    # Returns Array [Monthly Count, User Object] sorted by 
+    # monthly exercise count high to low
+    a = Array.new
+    User.all.each do |user|
+      if user.exercises.this_month.count > 0
+        a << [user.exercises.this_month.count, user]
+      end
+    end
+    a.sort.reverse!
+  end
+  end
