@@ -61,6 +61,10 @@ class User < ApplicationRecord
     leaders
   end
 
+  def User.sorted
+    User.monthly_count
+  end
+
   private
   
   def downcase_email

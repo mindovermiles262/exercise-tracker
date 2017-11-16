@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def leaderboard
+    @users = User.sorted
     @leaders = User.leaders
     @losers = User.losers
   end
