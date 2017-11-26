@@ -2,4 +2,6 @@
 
 require_relative 'config/environment'
 
-run Rails.application
+map '/exercise' do
+  run Rails.application
+end
