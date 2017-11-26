@@ -22,5 +22,6 @@ module ExerciseTracker
     config.root_directory = '/exercise/'
     config.action_controller.relative_url_root = '/exercise'
     config.relative_url_root = '/exercise'
+    # Some change
   end
 end
