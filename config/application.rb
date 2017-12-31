@@ -17,5 +17,13 @@ module ExerciseTracker
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+
+    # Set to run in /exercise subfolder
+    config.root_directory = '/exercise/'
+    config.action_controller.relative_url_root = '/exercise'
+    config.relative_url_root = '/exercise'
+
+    config.assets.compile = true
+    config.assets.precompile = %w[*.js *.css *.scss]
   end
 end
