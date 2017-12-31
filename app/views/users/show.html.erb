@@ -13,11 +13,11 @@
       <% end %>
     </section>
   </aside>
-  <!-- <aside class="col-md-2"></aside> -->
+</div>
 
+<div class="row">
   <!-- Display User Posts -->
   <div class="col-md-6">
-    <% if current_user == @user %>
       <% if @user.posts_count > 0 %>
         <h3>Your Posts (<%= @user.posts_count %>)</h3>
         <ol class="microposts">
@@ -25,18 +25,15 @@
         </ol>
         <%= will_paginate @posts %>
       <% end %>
-    <% end %>
   </div>
 
   <!-- Display User Exercises -->
   <div class="col-md-6">
-  <% if current_user == @user %>
     <% if @user.exercise_count > 0 %>
       <h3>Your Exercise History (<%= @user.exercise_count %>)</h3>
       <ol class="microposts">
         <%= render @exercises %>
       </ol>
     <% end %>
-  <% end %>
   </div>
 </div>

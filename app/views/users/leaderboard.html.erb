@@ -1,15 +1,13 @@
 <% provide(:title, "Leaderboard") %>
 <h1>Leaderboard</h1>
 
-<% @users.each_with_index do |user, index| %>
-  <%= render partial: 'user_count', :locals => { user: user, index: index } %>
+<% @leaders.each do |user| %>
+  <%= render partial: 'user_count', :locals => { user: user } %>
 <% end %>
 
 
-<%# <h1>Loserboard</h1> %>
+<h1>Loserboard</h1>
 
-<%#= @users %>
-
-<%# @losers.each do |user| %>
-  <%#= render partial: 'user_count', :locals => { user: user } %>
-<%# end %>
+<% @losers.each do |user| %>
+  <%= render partial: 'user_count', :locals => { user: user } %>
+<% end %>
