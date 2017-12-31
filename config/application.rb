@@ -23,7 +23,7 @@ module ExerciseTracker
     config.action_controller.relative_url_root = '/exercise'
     config.relative_url_root = '/exercise'
 
-    config.assets.compile = true
-    config.assets.precompile = %w[*.js *.css *.scss]
+    # config.assets.compile = true
+    # config.assets.precompile = %w[*.js *.css *.scss]
   end
 end
